@@ -1,0 +1,29 @@
+1. A
+2. HAVING  se utiliza para filtrar en una tabla en la cual ya sea han aplicado  agrupamientos con 'GROUP BY' o funciones de agregación. 'WHERE' se utiliza para filtrar registros tal como están en la table original, no aplica para tablas o vistas donde ya se haya hecho un 'GROUP BY' o una función de agrgación.
+3. C
+4.A
+5. MEME: En git commit, se muestra un avión estacionado y listo para despegar, hacienda referencia momento en que el código está completamente preparado para ser guardado en el historial local. En git push, el avión está en pleno despegue, lo que representa el envío de los cambios al repositorio remoto, una acción que indica que todo está funcionando correctamente y los cambios están "volando" hacia su destino; git add se ilustra con una escena desordenada de personas subiendo al avión con una escalera improvisada, reflejando el proceso más caótico y preliminar de seleccionar los archivos que serán preparados para el commit, pero que aún no están listos para ser guardados.
+6.
+a)SELECT avg (edad ) as edad_promedio FROM alumnos
+WHERE apellido like "%ez"
+b) SELECT 
+    alumnos.nombre, 
+    alumnos.apellido, 
+    MAX(calificaciones.calificacion)
+FROM 
+    alumnos
+LEFT JOIN 
+    calificaciones 
+ON 
+    alumnos.expediente = calificaciones.expediente
+	WHERE calificacion IS NOT NULL
+	GROUP BY nombre, apellido
+c)
+SELECT  DISTINCT alumnos.nombre,  alumnos.apellido
+FROM 
+    alumnos
+LEFT JOIN 
+    calificaciones 
+ON 
+    alumnos.expediente = calificaciones.expediente
+WHERE calificacion>(SELECT AVG(calificacion) FROM calificaciones)
